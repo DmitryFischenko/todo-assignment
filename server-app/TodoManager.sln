@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.Web", "TodoManager.Web\TodoManager.Web.csproj", "{463ABBB1-75DE-4D1F-A334-2FAB2167A04E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager", "TodoManager\TodoManager.csproj", "{3E3DC086-53FD-403A-A4E7-0AA3D2B50677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.Web.Tests", "TodoManager.Web.Tests\TodoManager.Web.Tests.csproj", "{38E69DAF-B3BA-4827-BBFA-B385EC2C0F8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.DataAccess", "TodoManager.DataAccess\TodoManager.DataAccess.csproj", "{447C2436-2EFF-4398-BFC8-6FBB73FD2AEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.DataAccess.SQLite", "TodoManager.DataAccess.SQLite\TodoManager.DataAccess.SQLite.csproj", "{3BBB5D86-8B8C-4FFC-8D29-57C31A5D6EBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.Implementation", "TodoManager.Implementation\TodoManager.Implementation.csproj", "{0A9F3175-6E0B-4A87-BE81-32290C9DB323}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.Implementation.Tests", "TodoManager.Implementation.Tests\TodoManager.Implementation.Tests.csproj", "{69E7A34A-2071-44AE-B864-D761005559E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoManager.DataAccess.SQLite.IntegrationTests", "TodoManager.DataAccess.SQLite.IntegrationTests\TodoManager.DataAccess.SQLite.IntegrationTests.csproj", "{BDECE99D-5C67-4785-846D-47443BEFBF09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{463ABBB1-75DE-4D1F-A334-2FAB2167A04E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{463ABBB1-75DE-4D1F-A334-2FAB2167A04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{463ABBB1-75DE-4D1F-A334-2FAB2167A04E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{463ABBB1-75DE-4D1F-A334-2FAB2167A04E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E3DC086-53FD-403A-A4E7-0AA3D2B50677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E3DC086-53FD-403A-A4E7-0AA3D2B50677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E3DC086-53FD-403A-A4E7-0AA3D2B50677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E3DC086-53FD-403A-A4E7-0AA3D2B50677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E69DAF-B3BA-4827-BBFA-B385EC2C0F8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E69DAF-B3BA-4827-BBFA-B385EC2C0F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E69DAF-B3BA-4827-BBFA-B385EC2C0F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E69DAF-B3BA-4827-BBFA-B385EC2C0F8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{447C2436-2EFF-4398-BFC8-6FBB73FD2AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{447C2436-2EFF-4398-BFC8-6FBB73FD2AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{447C2436-2EFF-4398-BFC8-6FBB73FD2AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{447C2436-2EFF-4398-BFC8-6FBB73FD2AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BBB5D86-8B8C-4FFC-8D29-57C31A5D6EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BBB5D86-8B8C-4FFC-8D29-57C31A5D6EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BBB5D86-8B8C-4FFC-8D29-57C31A5D6EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BBB5D86-8B8C-4FFC-8D29-57C31A5D6EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9F3175-6E0B-4A87-BE81-32290C9DB323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9F3175-6E0B-4A87-BE81-32290C9DB323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9F3175-6E0B-4A87-BE81-32290C9DB323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9F3175-6E0B-4A87-BE81-32290C9DB323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E7A34A-2071-44AE-B864-D761005559E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E7A34A-2071-44AE-B864-D761005559E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E7A34A-2071-44AE-B864-D761005559E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E7A34A-2071-44AE-B864-D761005559E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDECE99D-5C67-4785-846D-47443BEFBF09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDECE99D-5C67-4785-846D-47443BEFBF09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDECE99D-5C67-4785-846D-47443BEFBF09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDECE99D-5C67-4785-846D-47443BEFBF09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
