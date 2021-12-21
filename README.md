@@ -31,7 +31,8 @@ Exception to HttpCode conversion implemented in pipeline, in `GlobalExceptionHan
 For Logging Serilog for .NET is used. Configuration is in `appsettings.json`
 
 ### Dilemmas
-- More contracts but relevant fields only vs shared model with immutable fields
+- More contracts but relevant fields only vs shared model with immutable fields.
+
 Here I decided to go with shared model as the number of irrelevant fields is low (it's actually one). But if had, for instance, such by-server-populated fields as DateCreated, DateUpdated, Timestamp etc, I would have different contracts for input and output data on API and BL layers. 
 
 
