@@ -30,6 +30,11 @@ Exception to HttpCode conversion implemented in pipeline, in `GlobalExceptionHan
 ### Logging
 For Logging Serilog for .NET is used. Configuration is in `appsettings.json`
 
+### Dilemmas
+- More contracts but relevant fields only vs shared model with immutable fields
+Here I decided to go with shared model as the number of irrelevant fields is low (it's actually one). But if had, for instance, such by-server-populated fields as DateCreated, DateUpdated, Timestamp etc, I would have different contracts for input and output data on API and BL layers. 
+
+
 ### What I left behind due to lack of time
 - UTs are added not for all methods
  - No dedicated tests for Mapper (no custom field mapping in this solution though). Conversion logic partially covered in other tests.
