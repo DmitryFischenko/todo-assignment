@@ -1,9 +1,9 @@
-import { Button, Divider, List, Space } from 'antd'
-import TodoInput, { SubmitResult } from './TodoInput'
+import { Divider, List } from 'antd'
 import todoApiClient from './../api-clients/TodoItemsApiClient';
 import { TodoItem } from '../api-clients/contracts/TodoItem';
 import { useEffect, useState } from 'react';
 import TodoItemView from './TodoItemView';
+import _ from 'lodash';
 
 function TodoCompletedList() {
 
@@ -11,30 +11,36 @@ function TodoCompletedList() {
 
     const [loading, setLoading] = useState<boolean>(false)
 
-    const fetch = async () => {
+    const fetch = () => {
+
         setLoading(true);
-        const result = await todoApiClient.getCompleted();
-        setLoading(false);
-        setTodoItemList(result);
+
+        todoApiClient.getCompleted().then((items) => {
+            setTodoItemList(items);
+            setLoading(false);
+        });        
     }
 
-    const onDelete = async (todoItem: TodoItem)  => {
-        await todoApiClient.delete(todoItem.id as number);
-    
-        var copy = todoItemList.slice();
-    
-        copy.splice(copy.indexOf(todoItem), 1);
-        setTodoItemList(copy);
+    const removeFromStateById = (id: number) => {
+        let newList =_.clone(todoItemList);
+        _.remove(newList, {id: id});
+        setTodoItemList(newList);
+    }
+
+    const onDelete = (todoItem: TodoItem)  => {
+        todoApiClient.delete(todoItem.id).then(() => {
+            removeFromStateById(todoItem.id);
+        });
     }
     
-    const onMarkedAsActive = async (todoItem: TodoItem) => {
-        await todoApiClient.update({
+    const onMarkedAsActive = (todoItem: TodoItem) => {
+        todoApiClient.update({
           id: todoItem.id,
           title: todoItem.title,
           isCompleted: false
         })
-    
-        fetch();
+
+        removeFromStateById(todoItem.id);
     }
 
      useEffect(() => {
@@ -53,7 +59,9 @@ function TodoCompletedList() {
                 renderItem={item => <List.Item>
                     <TodoItemView item={item} 
                         onDelete={onDelete} 
-                        onMarkedAsCompleted={onMarkedAsActive}></TodoItemView>
+                        onMarkedAsCompleted={onMarkedAsActive}
+                        onEdit = {() => {}}
+                        ></TodoItemView>
                 </List.Item>}
             />
         </>

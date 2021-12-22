@@ -8,7 +8,7 @@ class TodoItemsApiClient {
                 isCompleted: false
             }
         })
-            .then((response) => response.data);        
+            .then((response) => response.data);
     }
 
     getCompleted(): Promise<TodoItem[]> {
@@ -17,19 +17,21 @@ class TodoItemsApiClient {
                 isCompleted: true
             }
         })
-            .then((response) => response.data);        
+            .then((response) => response.data);
     }
 
     delete(id: number) {
         return baseClient.delete(`todo-items/${id}`);
     }
 
-    update(todoItem: TodoItem) {
-        return baseClient.put(`todo-items/${todoItem.id}`, todoItem);
+    update(todoItem: TodoItem): Promise<TodoItem> {
+        return baseClient.put(`todo-items/${todoItem.id}`, todoItem)
+             .then((response) => response.data as TodoItem);;
     }
 
-    insert(todoItem: TodoItem){
-        return baseClient.post('todo-items', todoItem);
+    insert(todoItem: TodoItem): Promise<TodoItem> {
+        return baseClient.post('todo-items', todoItem)
+            .then((response) => response.data as TodoItem);
     }
 }
 
