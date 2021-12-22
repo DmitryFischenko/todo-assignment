@@ -122,7 +122,7 @@ namespace TodoManager.DataAccess.SQLite
             
             var foundEntity = await _dbContext.TodoItems
                 .AsNoTracking()
-                .Where(item => item.Title == title)
+                .Where(item => item.Title.ToLower() == title.ToLower())
                 .FirstOrDefaultAsync();
 
             if (foundEntity == null)

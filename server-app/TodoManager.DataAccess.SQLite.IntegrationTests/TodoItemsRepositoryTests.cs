@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Moq;
 using NUnit.Framework;
 using TodoManager.DataAccess.DataModel;
+using TodoManager.DataAccess.SQLite.Entities;
 
 namespace TodoManager.DataAccess.SQLite.IntegrationTests
 {
@@ -31,6 +32,8 @@ namespace TodoManager.DataAccess.SQLite.IntegrationTests
         [SetUp]
         public void Setup()
         {
+            _dbContext.Set<TodoItem>().RemoveRange(_dbContext.Set<TodoItem>());
+            _dbContext.SaveChanges();
             _testee = new TodoItemsRepository(_dbContext);
         }
 
@@ -63,7 +66,25 @@ namespace TodoManager.DataAccess.SQLite.IntegrationTests
             Assert.That(result.Id, Is.GreaterThan(0));
             Assert.That(result.Title, Is.EqualTo(dto.Title));
             Assert.That(result.IsCompleted, Is.EqualTo(dto.IsCompleted));
+        }
 
+        [Test]
+        [TestCase("ToDo1", "ToDo1")]
+        [TestCase("ToDo2", "todo2")]
+        [TestCase("todo3", "ToDo3")]
+        public async Task GetByTitleAsync_IgnoreCase(string insertWith, string findBy)
+        {
+            var dto = new TodoItemDto()
+            {
+                Title = insertWith
+            };
+
+            var inserted = await _testee.InsertAsync(dto);
+
+            var foundByTitle = await _testee.GetByTitleAsync(findBy);
+            
+            Assert.That(foundByTitle, Is.Not.Null);
+            Assert.That(foundByTitle.Id, Is.EqualTo(inserted.Id));
         }
     }
 }

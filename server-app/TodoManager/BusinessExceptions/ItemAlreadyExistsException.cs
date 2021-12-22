@@ -4,9 +4,8 @@
     {
         private const string MessageFormat = "Item with title '{0}' already exists";
         
-        public ItemAlreadyExistsException(string name):base(string.Format(MessageFormat, name))
+        public ItemAlreadyExistsException(string name):base(string.Format(MessageFormat, name), 1)
         {
-            
         }
     }
 }

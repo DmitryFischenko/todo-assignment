@@ -23,6 +23,8 @@ namespace TodoManager.Web
             TodoManager.Implementation.DependencyRegistration.Register(services);
             TodoManager.DataAccess.SQLite.DependencyRegistration.Register(services);
             
+            services.AddCors();
+            
             services.AddControllers();
             
             services.AddAutoMapper(
@@ -31,14 +33,6 @@ namespace TodoManager.Web
                 typeof(TodoManager.DataAccess.SQLite.DependencyRegistration));
             
             services.AddLogging();
-            
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll",
-                    builder => builder.WithOrigins("http://localhost:3000")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod());
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +41,14 @@ namespace TodoManager.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            
+            if (env.IsDevelopment())
+            {
+                app.UseCors(options => options.
+                    WithOrigins().AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
             }
             
             app.UseSerilogRequestLogging();
@@ -60,11 +62,6 @@ namespace TodoManager.Web
             
             app.UseRouting();
 
-            if (env.IsDevelopment())
-            {
-                app.UseCors("CorsApi");
-            }
-            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

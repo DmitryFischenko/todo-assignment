@@ -26,11 +26,12 @@ namespace TodoManager.Web.Pipeline
                                 Message = exception.Message
                             });
                             break;
-                        case BusinessException:
+                        case BusinessException exception:
                             context.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
                             context.Response.ContentType = "application/json";
-                            await context.Response.WriteAsJsonAsync(new ErrorDetails
+                            await context.Response.WriteAsJsonAsync(new BusinessExceptionErrorDetails()
                             {
+                                ErrorCode = exception.ErrorCode,
                                 Message = ex.Message
                             });
                             break;
